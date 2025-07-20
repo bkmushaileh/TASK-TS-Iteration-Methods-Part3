@@ -16,10 +16,11 @@ const temperatures = [
  */
 function filterHighTemperatures(temps: number[]): number[] {
   // Your code here
+  const highTemp = temps.filter((temp) => temp >= 25);
 
-  return []; // replace the empty array with what you see is fit
+  return highTemp; // replace the empty array with what you see is fit
 }
-
+console.log(filterHighTemperatures(temperatures));
 /**
  * `filterLowTemperatures` function:
  *  - Accepts a "temps" parameter of type "number[]".
@@ -29,10 +30,11 @@ function filterHighTemperatures(temps: number[]): number[] {
  */
 function filterLowTemperatures(temps: number[]): number[] {
   // Your code here
+  const lowTemp = temps.filter((temp) => temp < 20);
 
-  return []; // replace the empty array with what you see is fit
+  return lowTemp; // replace the empty array with what you see is fit
 }
-
+console.log(filterLowTemperatures(temperatures));
 /**
  * `convertCelsiusToFahrenheit` function:
  *  - Accepts a "temps" parameter of type "number[]".
@@ -43,10 +45,11 @@ function filterLowTemperatures(temps: number[]): number[] {
  */
 function convertCelsiusToFahrenheit(temps: number[]): number[] {
   // Your code here
+  const converted = temps.map((temp) => temp * (9 / 5) + 32);
 
-  return []; // replace the empty array with what you see is fit
+  return converted; // replace the empty array with what you see is fit
 }
-
+console.log(convertCelsiusToFahrenheit(temperatures));
 /**
  * `labelTemperatures` function:
  *  - Accepts a "temps" parameter of type "number[]".
@@ -61,10 +64,19 @@ type TemperatureLabel = "Warm" | "Mild" | "Cool";
 
 function labelTemperatures(temps: number[]): TemperatureLabel[] {
   // Your code here
-
-  return []; // replace the empty array with what you see is fit
+  let lebelTemp = temps.map((temp) => {
+    let tempr: TemperatureLabel; // Either Warm, Mild or Cool nothing else.
+    if (temp >= 25) {
+      tempr = "Warm";
+    } else if (temp >= 20 && temp <= 24) {
+      tempr = "Mild";
+    } else tempr = "Cool";
+    return tempr;
+    // map is returing a value tempr
+  });
+  return lebelTemp;
 }
-
+console.log(labelTemperatures([25, 22, 18]));
 /**
  * `getMaxTemperature` function:
  *  - Accepts a "temps" parameter of type "number[]".
